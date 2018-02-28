@@ -1,0 +1,41 @@
+.dt-ncard {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vk-toolbar {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #E84E0F;
+}
+
+
+.dt-card {
+    width : 16%;
+    margin: 10px 10px;
+}
+
+.example-spacer {
+    margin: 0 5px;
+}
+
+.dt-value {
+    color: #E84E0F;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dt-title {
+    font-size: 14px;
+}
+
+.dt-content {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+p {
+    Line-Height: 0.8;
+}

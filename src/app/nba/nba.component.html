@@ -1,0 +1,16 @@
+<div class="kpi-chart-grid">
+  <mat-toolbar class="vk-toolbar">
+    <mat-toolbar-row>
+      <mat-icon class="example-icon">{{titleicon}}</mat-icon>
+      <span class="example-spacer"></span>
+      <span>{{titlebar}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-card>
+    <div class="grid-container">
+      <p class="nba-label">{{gridTitle}}</p>
+      <app-datagrid-component [columns]='this.gridColumns' [datas]='this.gridDatas'></app-datagrid-component>
+      <br>
+    </div>
+  </mat-card>
+</div>
