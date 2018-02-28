@@ -1,20 +1,18 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Response, Headers } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GameDesc } from './gameDesc';
 import * as moment from 'moment';
-import {DatagridComponentComponent} from '../datagrid-component/datagrid-component.component';
+import { DatagridComponentComponent } from '../datagrid-component/datagrid-component.component';
 
 @Component({
     selector: 'app-nba',
     templateUrl: './nba.component.html',
     styleUrls: ['./nba.component.css']
 })
-export class NbaComponent {
-
-    // Arguments d'entrée du composant (utilisés dans le template et injecté dans le template principal)
-    @Input() titlebar: string;
-    @Input() titleicon: string;
+export class NbaComponent implements OnInit {
+    titlebar: string;
+    titleImg: string;
     @ViewChild(DatagridComponentComponent) datagridComponent;
     gridColumns: Array<Object>;
     gridDatas: Array<GameDesc>;
@@ -26,7 +24,6 @@ export class NbaComponent {
     };
 
     constructor(private http: HttpClient) {
-        this.getData();
         this.gridColumns = [
             { columnDef: 'date', header: 'Date', cell: (element: GameDesc) => `${element.date}` },
             { columnDef: 'time', header: 'Time', cell: (element: GameDesc) => `${element.time}` },
@@ -34,6 +31,12 @@ export class NbaComponent {
             { columnDef: 'homeTeam', header: 'Home team', cell: (element: GameDesc) => `${element.homeTeam}` },
             { columnDef: 'location', header: 'Location', cell: (element: GameDesc) => `${element.location}` },
         ];
+        this.titlebar = 'NBA';
+        this.titleImg = '../../../assets/img/nba-logo.png';
+    }
+
+    ngOnInit() {
+        this.getData();
     }
 
     private getData() {
@@ -41,7 +44,7 @@ export class NbaComponent {
         const today = new Date();
         this.http
             .get('https://api.mysportsfeeds.com/v1.2/pull/nba/2017-2018-regular/daily_game_schedule.json?fordate='
-             + moment(today).format('YYYYMMDD'),
+                + moment(today).format('YYYYMMDD'),
                 this.httpOptions)
             .subscribe(
                 data => {

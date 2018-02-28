@@ -5,9 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // On importe tous les composants. Cette partie est générée automatiquement si le composant est généré via le CLI
 import { AppComponent } from './app.component';
-import { KpiComponentComponent } from './kpi-component/kpi-component.component';
 import { DatagridComponentComponent } from './datagrid-component/datagrid-component.component';
-import { ItemDetailsComponent } from './item-details/item-details.component';
 import { NbaComponent } from './nba/nba.component';
 
 // On importe les composants material design NECESSAIRES (souvent la cause d'un bug type composant inexistant dans la console)
@@ -22,9 +20,7 @@ import {DataService} from './data.service';
 @NgModule({
   declarations: [
     AppComponent,
-    KpiComponentComponent,
     DatagridComponentComponent,
-    ItemDetailsComponent,
     NbaComponent
   ],
   imports: [
