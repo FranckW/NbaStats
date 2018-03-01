@@ -7,21 +7,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DatagridComponentComponent } from './datagrid-component/datagrid-component.component';
 import { NbaComponent } from './nba/nba.component';
+import { PlayerSearchComponent } from './player-search/player-search.component';
+import { PlayerDetailComponent } from './player-detail/player-detail.component';
 
 // On importe les composants material design NECESSAIRES (souvent la cause d'un bug type composant inexistant dans la console)
 // tslint:disable-next-line:max-line-length
-import {MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatTooltipModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatTooltipModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// On importe les services. Dans le cas précis ce service sert à charger un fichier json en local
-import {DataService} from './data.service';
+// On importe les services
+import { NbaApiService } from './utils/nba-api.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DatagridComponentComponent,
-    NbaComponent
+    NbaComponent,
+    PlayerDetailComponent,
+    PlayerSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +41,10 @@ import {DataService} from './data.service';
     MatInputModule,
     MatCardModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
-  providers: [DataService],
+  providers: [NbaApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

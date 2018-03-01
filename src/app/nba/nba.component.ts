@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Response, Headers } from '@angular/http';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { GameDesc } from './gameDesc';
-import * as moment from 'moment';
 import { DatagridComponentComponent } from '../datagrid-component/datagrid-component.component';
+import { NbaApiService } from '../utils/nba-api.service';
+import { GameDesc } from '../utils/gameDesc';
 
 @Component({
     selector: 'app-nba',
@@ -16,14 +14,8 @@ export class NbaComponent implements OnInit {
     @ViewChild(DatagridComponentComponent) datagridComponent;
     gridColumns: Array<Object>;
     gridDatas: Array<GameDesc>;
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic RnJhbmNrVzowNDA2OTI5OQ=='
-        })
-    };
 
-    constructor(private http: HttpClient) {
+    constructor(private nbaApi: NbaApiService) {
         this.gridColumns = [
             { columnDef: 'date', header: 'Date', cell: (element: GameDesc) => `${element.date}` },
             { columnDef: 'time', header: 'Time', cell: (element: GameDesc) => `${element.time}` },
@@ -41,25 +33,20 @@ export class NbaComponent implements OnInit {
 
     private getData() {
         this.gridDatas = new Array<GameDesc>();
-        const today = new Date();
-        this.http
-            .get('https://api.mysportsfeeds.com/v1.2/pull/nba/2017-2018-regular/daily_game_schedule.json?fordate='
-                + moment(today).format('YYYYMMDD'),
-                this.httpOptions)
+        this.nbaApi.getTodayGames()
             .subscribe(
                 data => {
                     for (const item of data['dailygameschedule']['gameentry']) {
-                        this.gridDatas.push({
-                            date: item['date'],
-                            time: item['time'],
-                            homeTeam: item['homeTeam']['Abbreviation'],
-                            awayTeam: item['awayTeam']['Abbreviation'],
-                            location: item['location']
-                        });
+                        this.gridDatas.push(new GameDesc(item['date'],
+                            item['time'], item['homeTeam']['Abbreviation'],
+                            item['awayTeam']['Abbreviation'], item['location']));
                     }
                     this.datagridComponent.setDatas(this.gridDatas);
                 },
-                error => console.log('error retrieving game datas: ' + error)
+                error => {
+                    console.log('error retrieving game datas');
+                    console.log(error);
+                }
             );
     }
 

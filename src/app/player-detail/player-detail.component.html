@@ -1,0 +1,44 @@
+<mat-spinner [style.display]="this.showSpinner ? 'block' : 'none'">
+</mat-spinner>
+<div *ngIf="this.dataLoaded">
+    <mat-card class="kpi-chart-grid">
+        <img src="{{this.player.pic}}" class="player-pic circle" />
+        <img src="../../assets/img/{{this.player.team}}.gif" class="team-logo" />
+        <h4>{{this.player.firstName}} {{this.player.lastName}}</h4>
+        <span>#{{this.player.jerseyNumber}} | {{this.player.position}}</span>
+        <ul class="player-detail">
+            <li>
+                <ul>
+                    <li>
+                        <span><strong>BORN</strong></span>
+                    </li>
+                    <li>
+                        <span><strong>AGE</strong></span>
+                    </li>
+                    <li>
+                        <span><strong>HEIGHT</strong></span>
+                    </li>
+                    <li>
+                        <span><strong>WEIGHT</strong></span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <span>{{this.player.birthDate}}, {{this.player.birthCountry}}</span>
+                    </li>
+                    <li>
+                        <span>{{this.player.age}} years</span>
+                    </li>
+                    <li>
+                        <span>{{this.player.height}}</span>
+                    </li>
+                    <li>
+                        <span>{{this.player.weight}}lbs</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </mat-card>
+</div>

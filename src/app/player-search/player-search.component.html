@@ -1,0 +1,11 @@
+<mat-card class="kpi-chart-grid">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <mat-form-field>
+                <input matInput (keyup.enter)="searchPlayer($event.target.value)" formControlName="searchText" placeholder="Search player ...">
+            </mat-form-field>
+            <span class="example-spacer"></span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <app-player-detail></app-player-detail>
+</mat-card>

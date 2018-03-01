@@ -1,0 +1,14 @@
+ul {
+    list-style-type: none;
+}
+
+ul.player-detail {
+    width: 400px;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+}
+
+.team-logo {
+    width: 100px;
+}
