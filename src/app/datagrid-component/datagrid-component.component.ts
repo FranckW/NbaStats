@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild} from '@angular/core';
 import {MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
-import { GameDesc } from '../nba/gameDesc';
+import { GameDesc } from '../utils/gameDesc';
 
 @Component({
   selector: 'app-datagrid-component',
@@ -18,6 +18,9 @@ export class DatagridComponentComponent implements OnInit {
 
   displayedColumns: any;
   dataSource: any;
+
+  @Input() showFilter: Boolean = true;
+  @Input() showPaginator: Boolean = true;
 
   // Gestion du filtre sur le datagrid
   applyFilter(filterValue: string) {
