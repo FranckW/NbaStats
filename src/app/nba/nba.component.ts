@@ -17,11 +17,11 @@ export class NbaComponent implements OnInit {
 
     constructor(private nbaApi: NbaApiService) {
         this.gridColumns = [
-            { columnDef: 'date', header: 'Date', cell: (element: GameDesc) => `${element.date}` },
-            { columnDef: 'time', header: 'Time', cell: (element: GameDesc) => `${element.time}` },
-            { columnDef: 'awayTeam', header: 'Away team', cell: (element: GameDesc) => `${element.awayTeam}` },
-            { columnDef: 'homeTeam', header: 'Home team', cell: (element: GameDesc) => `${element.homeTeam}` },
-            { columnDef: 'location', header: 'Location', cell: (element: GameDesc) => `${element.location}` },
+            { columnDef: 'date', header: 'Date', cell: (element: GameDesc) => element.date },
+            { columnDef: 'time', header: 'Time', cell: (element: GameDesc) => element.time },
+            { columnDef: 'awayTeam', header: 'Away team', cell: (element: GameDesc) => element.awayTeam },
+            { columnDef: 'homeTeam', header: 'Home team', cell: (element: GameDesc) => element.homeTeam },
+            { columnDef: 'location', header: 'Location', cell: (element: GameDesc) => element.location },
         ];
         this.titlebar = 'NBA';
         this.titleImg = '../../../assets/img/nba-logo.png';

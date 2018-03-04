@@ -30,7 +30,7 @@ export class PlayerSearchComponent implements OnInit {
 
     getRoasters() {
         if (this.allRoasters.length === 0) {
-            this.nbaApi.getAllTeamsRoaster()
+            this.nbaApi.getAllTeamsRoster()
                 .subscribe(
                     data => {
                         this.allRoasters = data['rosterplayers']['playerentry'];

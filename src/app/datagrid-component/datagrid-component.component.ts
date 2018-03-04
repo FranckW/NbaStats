@@ -44,7 +44,7 @@ export class DatagridComponentComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  setDatas(newDatas: Array<GameDesc>) {
+  setDatas(newDatas: Array<Object>) {
     this.datas = newDatas;
     this.dataSource = new MatTableDataSource(this.datas);
     this.dataSource.sort = this.sort;

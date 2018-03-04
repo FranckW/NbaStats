@@ -9,6 +9,7 @@ import { DatagridComponentComponent } from './datagrid-component/datagrid-compon
 import { NbaComponent } from './nba/nba.component';
 import { PlayerSearchComponent } from './player-search/player-search.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { TeamStatsComponent } from './teams-stats/teams-stats.component';
 
 // On importe les composants material design NECESSAIRES (souvent la cause d'un bug type composant inexistant dans la console)
 // tslint:disable-next-line:max-line-length
@@ -25,7 +26,8 @@ import { NbaApiService } from './utils/nba-api.service';
     DatagridComponentComponent,
     NbaComponent,
     PlayerDetailComponent,
-    PlayerSearchComponent
+    PlayerSearchComponent,
+    TeamStatsComponent
   ],
   imports: [
     BrowserModule,

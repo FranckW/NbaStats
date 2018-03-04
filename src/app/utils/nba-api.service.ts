@@ -26,11 +26,20 @@ export class NbaApiService {
         return this.http.get(this.baseUrl + '/daily_game_schedule.json?fordate=' + this.getTodayDate(), this.httpOptions);
     }
 
-    getAllTeamsRoaster() {
+    getAllTeamsRoster() {
         return this.http.get(this.baseUrl + '/roster_players.json?fordate=' + this.getTodayDate(), this.httpOptions);
     }
 
     getPlayerStats(id: Number) {
         return this.http.get(this.baseUrl + '/cumulative_player_stats.json?player=' + id, this.httpOptions);
+    }
+
+    getTeamsWL() {
+        return this.http.get(this.baseUrl + '/division_team_standings.json?teamstats=W,L', this.httpOptions);
+    }
+
+    getPlayerStatsForDate(date: Date, playerId: Number) {
+        const dateParam = moment(date).format('YYYYMMDD');
+        return this.http.get(this.baseUrl + '/daily_player_stats.json?player=' + playerId + '&fordate=' + dateParam, this.httpOptions);
     }
 }
